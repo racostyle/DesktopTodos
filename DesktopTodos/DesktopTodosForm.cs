@@ -1,8 +1,8 @@
 namespace DesktopTodos
 {
-    public partial class Form1 : Form
+    public partial class DesktopTodosForm : Form
     {
-        public Form1()
+        public DesktopTodosForm()
         {
             InitializeComponent();
         }
