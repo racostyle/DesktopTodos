@@ -31,16 +31,16 @@ namespace DesktopTodos.tabs
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            darkLabel1 = new UtilityLib.Controls.DarkLabel();
+            tableLayoutPanel3 = new TableLayoutPanel();
             tbNewTaskHotkey = new UtilityLib.Controls.DarkTextBox();
-            chbAreSoundAlerts = new UtilityLib.Controls.DarkCheckBox();
+            darkLabel1 = new UtilityLib.Controls.DarkLabel();
             chbAreVisualAlerts = new UtilityLib.Controls.DarkCheckBox();
+            chbAreSoundAlerts = new UtilityLib.Controls.DarkCheckBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             btnSaveSettings = new UtilityLib.Controls.DarkButton();
-            tableLayoutPanel3 = new TableLayoutPanel();
             tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -59,6 +59,42 @@ namespace DesktopTodos.tabs
             tableLayoutPanel1.Size = new Size(866, 574);
             tableLayoutPanel1.TabIndex = 0;
             // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 3;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.Controls.Add(tbNewTaskHotkey, 1, 0);
+            tableLayoutPanel3.Controls.Add(darkLabel1, 0, 0);
+            tableLayoutPanel3.Controls.Add(chbAreVisualAlerts, 0, 2);
+            tableLayoutPanel3.Controls.Add(chbAreSoundAlerts, 0, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 3);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 4;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Size = new Size(860, 518);
+            tableLayoutPanel3.TabIndex = 6;
+            // 
+            // tbNewTaskHotkey
+            // 
+            tbNewTaskHotkey.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tbNewTaskHotkey.BackColor = Color.Black;
+            tbNewTaskHotkey.BorderStyle = BorderStyle.FixedSingle;
+            tableLayoutPanel3.SetColumnSpan(tbNewTaskHotkey, 2);
+            tbNewTaskHotkey.Font = new Font("Arial", 8F);
+            tbNewTaskHotkey.ForeColor = Color.WhiteSmoke;
+            tbNewTaskHotkey.Location = new Point(289, 13);
+            tbNewTaskHotkey.Name = "tbNewTaskHotkey";
+            tbNewTaskHotkey.ReadOnly = true;
+            tbNewTaskHotkey.Size = new Size(568, 23);
+            tbNewTaskHotkey.TabIndex = 2;
+            tbNewTaskHotkey.Text = "Ctrl + Shift + Alt + N";
+            // 
             // darkLabel1
             // 
             darkLabel1.Anchor = AnchorStyles.Left;
@@ -73,19 +109,19 @@ namespace DesktopTodos.tabs
             darkLabel1.Text = "New task hotkey";
             darkLabel1.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // tbNewTaskHotkey
+            // chbAreVisualAlerts
             // 
-            tbNewTaskHotkey.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tbNewTaskHotkey.BackColor = Color.Black;
-            tbNewTaskHotkey.BorderStyle = BorderStyle.FixedSingle;
-            tbNewTaskHotkey.Font = new Font("Arial", 8F);
-            tbNewTaskHotkey.ForeColor = Color.WhiteSmoke;
-            tbNewTaskHotkey.Location = new Point(289, 13);
-            tbNewTaskHotkey.Name = "tbNewTaskHotkey";
-            tbNewTaskHotkey.ReadOnly = true;
-            tbNewTaskHotkey.Size = new Size(280, 23);
-            tbNewTaskHotkey.TabIndex = 2;
-            tbNewTaskHotkey.Text = "Ctrl + Shift + Alt + N";
+            chbAreVisualAlerts.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            chbAreVisualAlerts.AutoSize = true;
+            chbAreVisualAlerts.BackColor = Color.FromArgb(25, 25, 25);
+            chbAreVisualAlerts.Font = new Font("Arial", 8F);
+            chbAreVisualAlerts.ForeColor = Color.WhiteSmoke;
+            chbAreVisualAlerts.Location = new Point(3, 115);
+            chbAreVisualAlerts.Name = "chbAreVisualAlerts";
+            chbAreVisualAlerts.Size = new Size(280, 20);
+            chbAreVisualAlerts.TabIndex = 4;
+            chbAreVisualAlerts.Text = "Use visual alerts";
+            chbAreVisualAlerts.UseVisualStyleBackColor = false;
             // 
             // chbAreSoundAlerts
             // 
@@ -100,20 +136,6 @@ namespace DesktopTodos.tabs
             chbAreSoundAlerts.TabIndex = 3;
             chbAreSoundAlerts.Text = "Use sound alerts";
             chbAreSoundAlerts.UseVisualStyleBackColor = false;
-            // 
-            // chbAreVisualAlerts
-            // 
-            chbAreVisualAlerts.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            chbAreVisualAlerts.AutoSize = true;
-            chbAreVisualAlerts.BackColor = Color.FromArgb(25, 25, 25);
-            chbAreVisualAlerts.Font = new Font("Arial", 8F);
-            chbAreVisualAlerts.ForeColor = Color.WhiteSmoke;
-            chbAreVisualAlerts.Location = new Point(3, 115);
-            chbAreVisualAlerts.Name = "chbAreVisualAlerts";
-            chbAreVisualAlerts.Size = new Size(280, 20);
-            chbAreVisualAlerts.TabIndex = 4;
-            chbAreVisualAlerts.Text = "Use visual alerts";
-            chbAreVisualAlerts.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel2
             // 
@@ -146,27 +168,6 @@ namespace DesktopTodos.tabs
             btnSaveSettings.UseVisualStyleBackColor = false;
             btnSaveSettings.Click += OnBtnSaveSettings_Click;
             // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 3;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.Controls.Add(tbNewTaskHotkey, 1, 0);
-            tableLayoutPanel3.Controls.Add(darkLabel1, 0, 0);
-            tableLayoutPanel3.Controls.Add(chbAreVisualAlerts, 0, 2);
-            tableLayoutPanel3.Controls.Add(chbAreSoundAlerts, 0, 1);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 3);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 4;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(860, 518);
-            tableLayoutPanel3.TabIndex = 6;
-            // 
             // SettingsControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -176,9 +177,9 @@ namespace DesktopTodos.tabs
             Name = "SettingsControl";
             Size = new Size(866, 574);
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 

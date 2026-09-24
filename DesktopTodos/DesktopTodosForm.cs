@@ -23,7 +23,9 @@ namespace DesktopTodos
 
             _tasksControl = new TasksControl();
             _historyControl = new HistoryControl();
-            _settingsControl = new SettingsControl(_userSettingsHandler);
+            _settingsControl = new SettingsControl(
+                _userSettingsHandler, 
+                new Hotkeys.HotkeyCreation());
 
             Init();
         }
