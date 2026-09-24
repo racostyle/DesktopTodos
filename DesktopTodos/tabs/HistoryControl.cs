@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesktopTodos.tabs
+namespace DesktopTodos.Tabs
 {
     public partial class HistoryControl : UserControl
     {

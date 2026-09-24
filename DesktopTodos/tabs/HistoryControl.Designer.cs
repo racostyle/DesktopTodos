@@ -1,6 +1,6 @@
 ﻿using UtilityLib;
 
-namespace DesktopTodos.tabs
+namespace DesktopTodos.Tabs
 {
     partial class HistoryControl
     {

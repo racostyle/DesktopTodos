@@ -1,6 +1,6 @@
 
 using DesktopTodos.Hotkeys;
-using DesktopTodos.tabs;
+using DesktopTodos.Tabs;
 using UtilityLib.Configurations;
 
 namespace DesktopTodos

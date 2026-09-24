@@ -2,7 +2,7 @@
 using DesktopTodos.Hotkeys;
 using System.Windows.Forms;
 
-namespace DesktopTodos.tabs
+namespace DesktopTodos.Tabs
 {
     internal partial class SettingsControl : UserControl
     {
