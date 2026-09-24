@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>res\0 (21).ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="res\0 (21).ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\UtilityLib\UtilityLib.csproj" />
