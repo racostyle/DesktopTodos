@@ -23,7 +23,10 @@ namespace DesktopTodos.Tabs
         {
             if (sender is TextBox)
             {
-                var hotkey = _hotkeyManager.TryCreateHotkey((TextBox)sender, e);
+                if (_hotkeyManager.TryCreateHotkey((TextBox)sender, e))
+                {
+                    tbHotkeyID.Text = $"{_hotkeyManager.HotkeyID}";
+                }
             }
         }
 

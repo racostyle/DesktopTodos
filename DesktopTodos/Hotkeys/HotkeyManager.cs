@@ -10,6 +10,8 @@ namespace DesktopTodos.Hotkeys
         private int _hotkeyId;                 // 0 = nothing registered
         private Keys _currentHotkey = Keys.None;
 
+        internal int HotkeyID => _hotkeyId;
+
         public HotkeyManager(HotkeyCreation hotkeyCreation, HotkeyRegistration hotkeyRegistration)
         {
             _hotkeyCreation = hotkeyCreation;
