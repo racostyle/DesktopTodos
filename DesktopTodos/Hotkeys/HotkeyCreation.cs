@@ -4,38 +4,40 @@
     {
         private Keys _hotkey = Keys.None;
 
-        internal void ValidateAndCreateHotkey(TextBox textBox, KeyEventArgs e)
+        internal bool TryCreateHotkey(TextBox textBox, KeyEventArgs e, out Keys hotkey)
         {
-            e.SuppressKeyPress = true;   // don't type into the box
-      
-            // Backspace/Delete alone clears it
+            e.SuppressKeyPress = true;
+            hotkey = Keys.None;
+
+            // Backspace/Delete alone clears it -> final choice: "no hotkey"
             if (e.Modifiers == Keys.None && (e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete))
             {
-                _hotkey = Keys.None;
                 textBox.ForeColor = Color.Red;
                 textBox.Text = "(none)";
-                return;
+                return true;
             }
 
-            // Only a modifier held so far: show it and wait for the actual key
+            // Only a modifier held so far -> not finished yet
             if (e.KeyCode is Keys.ControlKey or Keys.ShiftKey or Keys.Menu or Keys.LWin or Keys.RWin)
             {
+                textBox.ForeColor = SystemColors.WindowText;
                 textBox.Text = FormatHotkey(e.Modifiers) + "...";
-                return;
+                return false;
             }
 
-            _hotkey = e.Modifiers | e.KeyCode;
+            var candidate = e.Modifiers | e.KeyCode;
 
-            if (!TryValidateHotkey(_hotkey, out var info))
+            if (!TryValidateHotkey(candidate, out var info))
             {
-                _hotkey = Keys.None;
                 textBox.ForeColor = Color.Red;
                 textBox.Text = info;
-                return;
+                return false;              // invalid -> keep the current hotkey
             }
 
-            textBox.ForeColor = Color.LightGreen;
-            textBox.Text = FormatHotkey(_hotkey);
+            textBox.ForeColor = Color.Green;
+            textBox.Text = FormatHotkey(candidate);
+            hotkey = candidate;
+            return true;
         }
 
         private static string FormatHotkey(Keys k)

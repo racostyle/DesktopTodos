@@ -1,4 +1,5 @@
 
+using DesktopTodos.Hotkeys;
 using DesktopTodos.tabs;
 using UtilityLib.Configurations;
 
@@ -7,6 +8,8 @@ namespace DesktopTodos
     public partial class DesktopTodosForm : Form
     {
         private readonly UserSettingsHandler _userSettingsHandler;
+
+        private readonly HotkeyManager _hotkeyManager;
 
         private readonly TasksControl _tasksControl;
         private readonly HistoryControl _historyControl;
@@ -21,13 +24,19 @@ namespace DesktopTodos
                 .ConfigureHandler<Handler_ComboBox>()
                 .ConfigureHandler<Handler_CheckBox>());
 
+            _hotkeyManager = new HotkeyManager(
+                new HotkeyCreation(),
+                new HotkeyRegistration(HotkeyPressedCallback));
+
             _tasksControl = new TasksControl();
             _historyControl = new HistoryControl();
             _settingsControl = new SettingsControl(
-                _userSettingsHandler, 
-                new Hotkeys.HotkeyCreation());
+                _userSettingsHandler,
+                _hotkeyManager);
 
             Init();
+
+            this.Disposed += OnDesktopTodosForm_Disposed;
         }
 
         private void Init()
@@ -42,6 +51,17 @@ namespace DesktopTodos
             control.Location = new Point(0, 0);
             control.Dock = DockStyle.Fill;
             page.Controls.Add(control);
+        }
+
+
+        private void HotkeyPressedCallback()
+        {
+            MessageBox.Show("Test!");
+        }
+
+        private void OnDesktopTodosForm_Disposed(object? sender, EventArgs e)
+        {
+            _hotkeyManager.Dispose();
         }
     }
 }

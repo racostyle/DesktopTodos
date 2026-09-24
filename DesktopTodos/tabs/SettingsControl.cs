@@ -1,18 +1,19 @@
 ﻿
 using DesktopTodos.Hotkeys;
+using System.Windows.Forms;
 
 namespace DesktopTodos.tabs
 {
     internal partial class SettingsControl : UserControl
     {
         private readonly UserSettingsHandler _userSettingsHandler;
-        private readonly HotkeyCreation _hotkeyCreation;
+        private readonly HotkeyManager _hotkeyManager;
 
-        public SettingsControl(UserSettingsHandler userSettingsHandler, HotkeyCreation hotkeyCreation)
+        public SettingsControl(UserSettingsHandler userSettingsHandler, HotkeyManager hotkeyManager)
         {
             InitializeComponent();
             _userSettingsHandler = userSettingsHandler;
-            _hotkeyCreation = hotkeyCreation;
+            _hotkeyManager = hotkeyManager;
             _userSettingsHandler.Unpack(this);
 
             tbNewTaskHotkey.KeyDown += OnTbNewTaskHotkey_KeyDown;
@@ -21,17 +22,14 @@ namespace DesktopTodos.tabs
         private void OnTbNewTaskHotkey_KeyDown(object? sender, KeyEventArgs e)
         {
             if (sender is TextBox)
-                _hotkeyCreation.ValidateAndCreateHotkey((TextBox)sender, e);
+            {
+                var hotkey = _hotkeyManager.TryCreateHotkey((TextBox)sender, e);
+            }
         }
 
         private void OnBtnSaveSettings_Click(object sender, EventArgs e)
         {
             _userSettingsHandler.Pack(this);
-        }
-
-        private void OnBtnValidateHotkey_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
