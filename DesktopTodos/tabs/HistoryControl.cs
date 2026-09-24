@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DesktopTodos.tabs
 {
-    public partial class TaskControl : UserControl
+    public partial class HistoryControl : UserControl
     {
-        public TaskControl()
+        public HistoryControl()
         {
             InitializeComponent();
         }

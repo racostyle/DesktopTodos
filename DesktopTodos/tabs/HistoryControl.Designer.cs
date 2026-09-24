@@ -2,7 +2,7 @@
 
 namespace DesktopTodos.tabs
 {
-    partial class TaskControl
+    partial class HistoryControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,18 +30,36 @@ namespace DesktopTodos.tabs
         /// </summary>
         private void InitializeComponent()
         {
+            darkLabel1 = new UtilityLib.Controls.DarkLabel();
             SuspendLayout();
             // 
-            // TaskControl
+            // darkLabel1
+            // 
+            darkLabel1.AutoSize = true;
+            darkLabel1.BackColor = Color.FromArgb(25, 25, 25);
+            darkLabel1.Font = new Font("Arial", 8F);
+            darkLabel1.ForeColor = Color.WhiteSmoke;
+            darkLabel1.Location = new Point(81, 57);
+            darkLabel1.Name = "darkLabel1";
+            darkLabel1.Size = new Size(50, 16);
+            darkLabel1.TabIndex = 0;
+            darkLabel1.Text = "History";
+            darkLabel1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // HistoryControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 25);
-            Name = "TaskControl";
-            Size = new Size(785, 513);
+            Controls.Add(darkLabel1);
+            Name = "HistoryControl";
+            Size = new Size(552, 319);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private UtilityLib.Controls.DarkLabel darkLabel1;
     }
 }

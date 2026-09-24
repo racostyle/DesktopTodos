@@ -34,11 +34,8 @@ namespace DesktopTodos
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DesktopTodosForm));
             tabControl = new DarkTabControl();
             tabTasks = new TabPage();
-            taskControl1 = new DesktopTodos.tabs.TaskControl();
             tabHistory = new TabPage();
             tabSettings = new TabPage();
-            historyTab1 = new DesktopTodos.tabs.HistoryTab();
-            settingsTab1 = new DesktopTodos.tabs.SettingsTab();
             tabControl.SuspendLayout();
             tabTasks.SuspendLayout();
             tabHistory.SuspendLayout();
@@ -66,7 +63,6 @@ namespace DesktopTodos
             // 
             tabTasks.AllowDrop = true;
             tabTasks.BackColor = Color.FromArgb(25, 25, 25);
-            tabTasks.Controls.Add(taskControl1);
             tabTasks.ForeColor = Color.WhiteSmoke;
             tabTasks.Location = new Point(4, 31);
             tabTasks.Name = "tabTasks";
@@ -75,19 +71,9 @@ namespace DesktopTodos
             tabTasks.TabIndex = 0;
             tabTasks.Text = "Tasks";
             // 
-            // taskControl1
-            // 
-            taskControl1.BackColor = Color.FromArgb(25, 25, 25);
-            taskControl1.Dock = DockStyle.Fill;
-            taskControl1.Location = new Point(3, 3);
-            taskControl1.Name = "taskControl1";
-            taskControl1.Size = new Size(786, 409);
-            taskControl1.TabIndex = 0;
-            // 
             // tabHistory
             // 
             tabHistory.BackColor = Color.FromArgb(25, 25, 25);
-            tabHistory.Controls.Add(historyTab1);
             tabHistory.ForeColor = Color.WhiteSmoke;
             tabHistory.Location = new Point(4, 31);
             tabHistory.Name = "tabHistory";
@@ -99,32 +85,12 @@ namespace DesktopTodos
             // tabSettings
             // 
             tabSettings.BackColor = Color.FromArgb(25, 25, 25);
-            tabSettings.Controls.Add(settingsTab1);
             tabSettings.ForeColor = Color.WhiteSmoke;
             tabSettings.Location = new Point(4, 31);
             tabSettings.Name = "tabSettings";
             tabSettings.Size = new Size(792, 415);
             tabSettings.TabIndex = 2;
             tabSettings.Text = "Settings";
-            // 
-            // historyTab1
-            // 
-            historyTab1.BackColor = Color.FromArgb(25, 25, 25);
-            historyTab1.Dock = DockStyle.Fill;
-            historyTab1.Location = new Point(3, 3);
-            historyTab1.Name = "historyTab1";
-            historyTab1.Size = new Size(786, 409);
-            historyTab1.TabIndex = 0;
-            // 
-            // settingsTab1
-            // 
-            settingsTab1.BackColor = Color.FromArgb(25, 25, 25);
-            settingsTab1.Dock = DockStyle.Fill;
-            settingsTab1.Location = new Point(0, 0);
-            settingsTab1.Name = "settingsTab1";
-            settingsTab1.Size = new Size(792, 415);
-            settingsTab1.TabIndex = 0;
-            // 
             // DesktopTodosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -150,8 +116,5 @@ namespace DesktopTodos
         private TabPage tabTasks;
         private TabPage tabHistory;
         private TabPage tabSettings;
-        private tabs.TaskControl taskControl1;
-        private tabs.HistoryTab historyTab1;
-        private tabs.SettingsTab settingsTab1;
     }
 }
