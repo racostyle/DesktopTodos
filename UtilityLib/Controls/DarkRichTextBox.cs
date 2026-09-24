@@ -1,6 +1,3 @@
-using System.Drawing;
-using System.Windows.Forms;
-using UtilityLib;
 using System.ComponentModel;
 
 namespace UtilityLib.Controls
@@ -29,6 +26,12 @@ namespace UtilityLib.Controls
             BackColor = Color.Black;
             ForeColor = Color.WhiteSmoke;
             BorderStyle = BorderStyle.None;
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            DarkTheme.Apply(Handle, DarkTheme.EXPLORER);
         }
 
         protected override void OnPaint(PaintEventArgs e)

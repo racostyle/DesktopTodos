@@ -1,6 +1,3 @@
-using System.Drawing;
-using System.Windows.Forms;
-using UtilityLib;
 using System.ComponentModel;
 
 namespace UtilityLib.Controls
@@ -36,6 +33,16 @@ namespace UtilityLib.Controls
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
+            if (!Enabled)
+            {
+                // Default disabled text is nearly black on a dark background
+                using (SolidBrush brush = new SolidBrush(BackColor))
+                {
+                    pevent.Graphics.FillRectangle(brush, ClientRectangle);
+                }
+                TextRenderer.DrawText(pevent.Graphics, Text, Font, ClientRectangle, DarkTheme.DISABLED_TEXT_COLOR,
+                    DarkTheme.ToTextFormat(TextAlign));
+            }
             int thickness = 2;
             int halfThickness = thickness / 2;
             using (Pen p = new Pen(borderColor, thickness))

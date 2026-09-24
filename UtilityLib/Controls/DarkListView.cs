@@ -1,6 +1,3 @@
-using System.Drawing;
-using System.Windows.Forms;
-using UtilityLib;
 using System.ComponentModel;
 
 namespace UtilityLib.Controls
@@ -29,6 +26,51 @@ namespace UtilityLib.Controls
             BackColor = Color.Black;
             ForeColor = Color.WhiteSmoke;
             BorderStyle = BorderStyle.FixedSingle;
+            // Owner draw only the column headers, the themed header text is unreadable
+            OwnerDraw = true;
+        }
+
+        protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
+        {
+            using (SolidBrush brush = new SolidBrush(CustomColors.PANEL_COLOR))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+            using (Pen p = new Pen(_borderColor))
+            {
+                e.Graphics.DrawLine(p, e.Bounds.Right - 1, e.Bounds.Top, e.Bounds.Right - 1, e.Bounds.Bottom);
+            }
+
+            Rectangle textRect = new Rectangle(e.Bounds.X + 4, e.Bounds.Y, e.Bounds.Width - 8, e.Bounds.Height);
+            TextFormatFlags flags = TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.EndEllipsis;
+            if (e.Header.TextAlign == HorizontalAlignment.Center)
+                flags |= TextFormatFlags.HorizontalCenter;
+            else if (e.Header.TextAlign == HorizontalAlignment.Right)
+                flags |= TextFormatFlags.Right;
+            TextRenderer.DrawText(e.Graphics, e.Header.Text, Font, textRect, ForeColor, flags);
+        }
+
+        protected override void OnDrawItem(DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+            base.OnDrawItem(e);
+        }
+
+        protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
+        {
+            e.DrawDefault = true;
+            base.OnDrawSubItem(e);
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            DarkTheme.Apply(Handle, DarkTheme.EXPLORER);
+
+            const int LVM_GETHEADER = 0x101F;
+            nint header = DarkTheme.SendMessage(Handle, LVM_GETHEADER, nint.Zero, nint.Zero);
+            if (header != nint.Zero)
+                DarkTheme.Apply(header, DarkTheme.ITEMS_VIEW);
         }
 
         protected override void OnPaint(PaintEventArgs e)

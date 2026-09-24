@@ -1,4 +1,5 @@
 ﻿using UtilityLib;
+using UtilityLib.Controls;
 
 namespace DesktopTodos
 {
@@ -31,102 +32,60 @@ namespace DesktopTodos
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DesktopTodosForm));
-            tableLayoutPanel1 = new TableLayoutPanel();
-            flpTodos = new FlowLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            btnAdd = new UtilityLib.Controls.DarkButton();
-            btnSettings = new UtilityLib.Controls.DarkButton();
-            btnHistory = new UtilityLib.Controls.DarkButton();
-            tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
+            tabControl = new DarkTabControl();
+            tabTasks = new TabPage();
+            tabHistory = new TabPage();
+            tabSettings = new TabPage();
+            tabControl.SuspendLayout();
             SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tabControl
             // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            tableLayoutPanel1.Controls.Add(flpTodos, 0, 0);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(800, 450);
-            tableLayoutPanel1.TabIndex = 0;
+            tabControl.Controls.Add(tabTasks);
+            tabControl.Controls.Add(tabHistory);
+            tabControl.Controls.Add(tabSettings);
+            tabControl.Dock = DockStyle.Fill;
+            tabControl.Font = new Font("Arial", 8F);
+            tabControl.ForeColor = Color.WhiteSmoke;
+            tabControl.Location = new Point(0, 0);
+            tabControl.Margin = new Padding(3, 0, 0, 0);
+            tabControl.Name = "tabControl";
+            tabControl.Padding = new Point(10, 4);
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(800, 450);
+            tabControl.TabIndex = 2;
             // 
-            // flpTodos
+            // tabTasks
             // 
-            flpTodos.Dock = DockStyle.Fill;
-            flpTodos.FlowDirection = FlowDirection.TopDown;
-            flpTodos.Location = new Point(3, 3);
-            flpTodos.Name = "flpTodos";
-            flpTodos.Size = new Size(694, 444);
-            flpTodos.TabIndex = 0;
+            tabTasks.BackColor = Color.FromArgb(25, 25, 25);
+            tabTasks.ForeColor = Color.WhiteSmoke;
+            tabTasks.Location = new Point(4, 31);
+            tabTasks.Name = "tabTasks";
+            tabTasks.Padding = new Padding(3);
+            tabTasks.Size = new Size(792, 415);
+            tabTasks.TabIndex = 0;
+            tabTasks.Text = "Tasks";
             // 
-            // tableLayoutPanel2
+            // tabHistory
             // 
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(btnHistory, 0, 2);
-            tableLayoutPanel2.Controls.Add(btnSettings, 0, 1);
-            tableLayoutPanel2.Controls.Add(btnAdd, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(703, 3);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 4;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(94, 444);
-            tableLayoutPanel2.TabIndex = 1;
+            tabHistory.BackColor = Color.FromArgb(25, 25, 25);
+            tabHistory.ForeColor = Color.WhiteSmoke;
+            tabHistory.Location = new Point(4, 31);
+            tabHistory.Name = "tabHistory";
+            tabHistory.Padding = new Padding(3);
+            tabHistory.Size = new Size(792, 415);
+            tabHistory.TabIndex = 1;
+            tabHistory.Text = "History";
             // 
-            // btnAdd
+            // tabSettings
             // 
-            btnAdd.BackColor = Color.Black;
-            btnAdd.Dock = DockStyle.Fill;
-            btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Font = new Font("Arial", 28.2F, FontStyle.Bold);
-            btnAdd.ForeColor = Color.WhiteSmoke;
-            btnAdd.Location = new Point(3, 3);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(88, 94);
-            btnAdd.TabIndex = 0;
-            btnAdd.Text = "+";
-            btnAdd.UseVisualStyleBackColor = false;
-            // 
-            // btnSettings
-            // 
-            btnSettings.BackColor = Color.Black;
-            btnSettings.Dock = DockStyle.Fill;
-            btnSettings.FlatAppearance.BorderSize = 0;
-            btnSettings.FlatStyle = FlatStyle.Flat;
-            btnSettings.Font = new Font("Arial", 28.2F, FontStyle.Bold);
-            btnSettings.ForeColor = Color.WhiteSmoke;
-            btnSettings.Location = new Point(3, 103);
-            btnSettings.Name = "btnSettings";
-            btnSettings.Size = new Size(88, 94);
-            btnSettings.TabIndex = 1;
-            btnSettings.Text = "⚙";
-            btnSettings.UseVisualStyleBackColor = false;
-            // 
-            // btnHistory
-            // 
-            btnHistory.BackColor = Color.Black;
-            btnHistory.Dock = DockStyle.Fill;
-            btnHistory.FlatAppearance.BorderSize = 0;
-            btnHistory.FlatStyle = FlatStyle.Flat;
-            btnHistory.Font = new Font("Arial", 28.2F, FontStyle.Bold);
-            btnHistory.ForeColor = Color.WhiteSmoke;
-            btnHistory.Location = new Point(3, 203);
-            btnHistory.Name = "btnHistory";
-            btnHistory.Size = new Size(88, 94);
-            btnHistory.TabIndex = 2;
-            btnHistory.Text = "☰";
-            btnHistory.UseVisualStyleBackColor = false;
+            tabSettings.BackColor = Color.FromArgb(25, 25, 25);
+            tabSettings.ForeColor = Color.WhiteSmoke;
+            tabSettings.Location = new Point(4, 31);
+            tabSettings.Name = "tabSettings";
+            tabSettings.Size = new Size(792, 415);
+            tabSettings.TabIndex = 2;
+            tabSettings.Text = "Settings";
             // 
             // DesktopTodosForm
             // 
@@ -134,22 +93,21 @@ namespace DesktopTodos
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 25);
             ClientSize = new Size(800, 450);
-            Controls.Add(tableLayoutPanel1);
+            Controls.Add(tabControl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "DesktopTodosForm";
             Text = "Desktop Todos";
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
+            tabControl.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private TableLayoutPanel tableLayoutPanel1;
-        private FlowLayoutPanel flpTodos;
-        private TableLayoutPanel tableLayoutPanel2;
-        private UtilityLib.Controls.DarkButton btnHistory;
-        private UtilityLib.Controls.DarkButton btnSettings;
-        private UtilityLib.Controls.DarkButton btnAdd;
+        private DarkButton btnHistory;
+        private DarkButton btnSettings;
+        private DarkButton btnAdd;
+        private DarkTabControl tabControl;
+        private TabPage tabTasks;
+        private TabPage tabHistory;
+        private TabPage tabSettings;
     }
 }
