@@ -17,16 +17,14 @@ namespace DesktopTodos.Tabs
 
             tbTodoText.DataBindings.Add("Text", _currentTodo, nameof(Todo.Text), false, DataSourceUpdateMode.OnPropertyChanged);
             pckrStartDateTime.DataBindings.Add("Value", _currentTodo, nameof(Todo.StartDateTime), false, DataSourceUpdateMode.OnPropertyChanged);
-
             chbTriggerStartAlert.DataBindings.Add("Checked", _currentTodo, nameof(Todo.IsStartAlert), false, DataSourceUpdateMode.OnPropertyChanged);
+
             chbHasEndTime.DataBindings.Add("Checked", _currentTodo, nameof(Todo.IsEndDateTimeSelected), false, DataSourceUpdateMode.OnPropertyChanged);
             pckrEndDateTime.DataBindings.Add("Value", _currentTodo, nameof(Todo.EndDateTime), false, DataSourceUpdateMode.OnPropertyChanged);
             chbTriggerEndAlert.DataBindings.Add("Checked", _currentTodo, nameof(Todo.IsEndAlert), false, DataSourceUpdateMode.OnPropertyChanged);
 
-
             chbDoRepeat.DataBindings.Add("Checked", _currentTodo, nameof(Todo.IsRepeatable), false, DataSourceUpdateMode.OnPropertyChanged);
             numIntervalValue.DataBindings.Add("Value", _currentTodo, nameof(Todo.RepeatIntervalValue), false, DataSourceUpdateMode.OnPropertyChanged);
-
             cbbRepeatIntervalType.DataBindings.Add("SelectedItem", _currentTodo, nameof(Todo.RepeatIntervalTimeType), false, DataSourceUpdateMode.OnPropertyChanged);
             cbbRepeatIntervalDays.DataBindings.Add("SelectedItem", _currentTodo, nameof(Todo.RepeatIntervalDays), false, DataSourceUpdateMode.OnPropertyChanged);
 
