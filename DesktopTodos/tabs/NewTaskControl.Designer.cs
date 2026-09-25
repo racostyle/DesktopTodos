@@ -52,9 +52,9 @@ namespace DesktopTodos.Tabs
             darkNumericUpDown1 = new UtilityLib.Controls.DarkNumericUpDown();
             cbbRepeatIntervalType = new UtilityLib.Controls.DarkComboBox();
             tableLayoutPanel8 = new TableLayoutPanel();
-            rbtnRepeatOnWorkdays = new RadioButton();
-            rbtnRepeatOnWeekends = new RadioButton();
             rbtnRepeatDaily = new RadioButton();
+            rbtnRepeatOnWeekends = new RadioButton();
+            rbtnRepeatOnWorkdays = new RadioButton();
             darkLabel3 = new UtilityLib.Controls.DarkLabel();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -349,7 +349,7 @@ namespace DesktopTodos.Tabs
             darkLabel2.Size = new Size(152, 23);
             darkLabel2.TabIndex = 6;
             darkLabel2.Text = "Repeat every";
-            darkLabel2.TextAlign = ContentAlignment.MiddleCenter;
+            darkLabel2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // chbDoRepeat
             // 
@@ -412,20 +412,20 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel8.Size = new Size(462, 41);
             tableLayoutPanel8.TabIndex = 9;
             // 
-            // rbtnRepeatOnWorkdays
+            // rbtnRepeatDaily
             // 
-            rbtnRepeatOnWorkdays.Anchor = AnchorStyles.Left;
-            rbtnRepeatOnWorkdays.AutoSize = true;
-            rbtnRepeatOnWorkdays.Font = new Font("Arial Narrow", 11F);
-            rbtnRepeatOnWorkdays.ForeColor = Color.White;
-            rbtnRepeatOnWorkdays.Location = new Point(316, 7);
-            rbtnRepeatOnWorkdays.Margin = new Padding(10, 0, 0, 0);
-            rbtnRepeatOnWorkdays.Name = "rbtnRepeatOnWorkdays";
-            rbtnRepeatOnWorkdays.Size = new Size(101, 27);
-            rbtnRepeatOnWorkdays.TabIndex = 2;
-            rbtnRepeatOnWorkdays.TabStop = true;
-            rbtnRepeatOnWorkdays.Text = "Workdays";
-            rbtnRepeatOnWorkdays.UseVisualStyleBackColor = true;
+            rbtnRepeatDaily.Anchor = AnchorStyles.Left;
+            rbtnRepeatDaily.AutoSize = true;
+            rbtnRepeatDaily.Font = new Font("Arial Narrow", 11F);
+            rbtnRepeatDaily.ForeColor = Color.White;
+            rbtnRepeatDaily.Location = new Point(10, 7);
+            rbtnRepeatDaily.Margin = new Padding(10, 0, 0, 0);
+            rbtnRepeatDaily.Name = "rbtnRepeatDaily";
+            rbtnRepeatDaily.Size = new Size(64, 27);
+            rbtnRepeatDaily.TabIndex = 0;
+            rbtnRepeatDaily.TabStop = true;
+            rbtnRepeatDaily.Text = "Daily";
+            rbtnRepeatDaily.UseVisualStyleBackColor = true;
             // 
             // rbtnRepeatOnWeekends
             // 
@@ -442,20 +442,20 @@ namespace DesktopTodos.Tabs
             rbtnRepeatOnWeekends.Text = "Weekends";
             rbtnRepeatOnWeekends.UseVisualStyleBackColor = true;
             // 
-            // rbtnRepeatDaily
+            // rbtnRepeatOnWorkdays
             // 
-            rbtnRepeatDaily.Anchor = AnchorStyles.Left;
-            rbtnRepeatDaily.AutoSize = true;
-            rbtnRepeatDaily.Font = new Font("Arial Narrow", 11F);
-            rbtnRepeatDaily.ForeColor = Color.White;
-            rbtnRepeatDaily.Location = new Point(10, 7);
-            rbtnRepeatDaily.Margin = new Padding(10, 0, 0, 0);
-            rbtnRepeatDaily.Name = "rbtnRepeatDaily";
-            rbtnRepeatDaily.Size = new Size(64, 27);
-            rbtnRepeatDaily.TabIndex = 0;
-            rbtnRepeatDaily.TabStop = true;
-            rbtnRepeatDaily.Text = "Daily";
-            rbtnRepeatDaily.UseVisualStyleBackColor = true;
+            rbtnRepeatOnWorkdays.Anchor = AnchorStyles.Left;
+            rbtnRepeatOnWorkdays.AutoSize = true;
+            rbtnRepeatOnWorkdays.Font = new Font("Arial Narrow", 11F);
+            rbtnRepeatOnWorkdays.ForeColor = Color.White;
+            rbtnRepeatOnWorkdays.Location = new Point(316, 7);
+            rbtnRepeatOnWorkdays.Margin = new Padding(10, 0, 0, 0);
+            rbtnRepeatOnWorkdays.Name = "rbtnRepeatOnWorkdays";
+            rbtnRepeatOnWorkdays.Size = new Size(101, 27);
+            rbtnRepeatOnWorkdays.TabIndex = 2;
+            rbtnRepeatOnWorkdays.TabStop = true;
+            rbtnRepeatOnWorkdays.Text = "Workdays";
+            rbtnRepeatOnWorkdays.UseVisualStyleBackColor = true;
             // 
             // darkLabel3
             // 
