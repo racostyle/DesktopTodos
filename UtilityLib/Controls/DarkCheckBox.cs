@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
+using UtilityLib.Controls.Theming;
 
 namespace UtilityLib.Controls
 {

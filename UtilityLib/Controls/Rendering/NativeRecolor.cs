@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace UtilityLib.Controls
+namespace UtilityLib.Controls.Rendering
 {
     // Some native controls (DateTimePicker, MonthCalendar, UpDown) always paint light.
     // These helpers let them paint into a bitmap, recolor it dark and put it on screen.
@@ -76,6 +76,16 @@ namespace UtilityLib.Controls
                     painted = pixels[i] != UNPAINTED.B || pixels[i + 1] != UNPAINTED.G || pixels[i + 2] != UNPAINTED.R;
                 if (painted)
                 {
+                    // Parts the control skipped (e.g. its border) count as background
+                    for (int i = 0; i < pixels.Length; i += 4)
+                    {
+                        if (pixels[i] == UNPAINTED.B && pixels[i + 1] == UNPAINTED.G && pixels[i + 2] == UNPAINTED.R)
+                        {
+                            pixels[i] = 255;
+                            pixels[i + 1] = 255;
+                            pixels[i + 2] = 255;
+                        }
+                    }
                     recolor(pixels, data.Stride, width, height);
                     for (int i = 3; i < pixels.Length; i += 4)
                         pixels[i] = 255;
@@ -228,129 +238,5 @@ namespace UtilityLib.Controls
 
         [DllImport("user32.dll")]
         private static extern bool GetClientRect(nint hWnd, out RECT lpRect);
-    }
-
-    // Recolors a native child window the control does not own (calendar popup, up-down arrows)
-    internal class NativeRecolorWindow : NativeWindow, IMessageFilter
-    {
-        private readonly Func<NativeRecolor.Recolorer> _recolor;
-        private Bitmap _lastFrame;
-
-        public NativeRecolorWindow(nint handle, Func<NativeRecolor.Recolorer> recolor)
-        {
-            _recolor = recolor;
-            AssignHandle(handle);
-            Application.AddMessageFilter(this);
-        }
-
-        protected override void OnHandleChange()
-        {
-            base.OnHandleChange();
-            // NativeWindow releases the handle by itself on WM_NCDESTROY
-            if (Handle == nint.Zero)
-            {
-                Application.RemoveMessageFilter(this);
-                _lastFrame?.Dispose();
-                _lastFrame = null;
-            }
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == NativeRecolor.WM_PAINT)
-            {
-                NativeRecolor.Paint(Handle, msg => DefWndProc(ref msg), _recolor(), ref _lastFrame);
-                return;
-            }
-            base.WndProc(ref m);
-        }
-
-        // Animations (calendar month change) are driven by timer callbacks that paint straight
-        // to the screen and never reach WndProc. Run the callback here, then repaint right away
-        // so the light frame is replaced before it is shown.
-        public bool PreFilterMessage(ref Message m)
-        {
-            if (m.Msg != WM_TIMER || m.HWnd != Handle || Handle == nint.Zero)
-                return false;
-
-            MSG msg = new MSG { hwnd = m.HWnd, message = m.Msg, wParam = m.WParam, lParam = m.LParam };
-            DispatchMessage(ref msg);
-            if (Handle != nint.Zero)
-                RedrawWindow(Handle, nint.Zero, nint.Zero, RDW_INVALIDATE | RDW_UPDATENOW);
-            return true;
-        }
-
-        private const int WM_TIMER = 0x113;
-        private const uint RDW_INVALIDATE = 0x1;
-        private const uint RDW_UPDATENOW = 0x100;
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct MSG
-        {
-            public nint hwnd;
-            public int message;
-            public nint wParam;
-            public nint lParam;
-            public int time;
-            public int ptX;
-            public int ptY;
-        }
-
-        [DllImport("user32.dll")]
-        private static extern nint DispatchMessage(ref MSG msg);
-
-        [DllImport("user32.dll")]
-        private static extern bool RedrawWindow(nint hWnd, nint lprcUpdate, nint hrgnUpdate, uint flags);
-    }
-
-    // Fills a native window we do not own with one color (margin of the drop down popup)
-    internal class NativeFillWindow : NativeWindow
-    {
-        private const int WM_ERASEBKGND = 0x14;
-        private readonly Color _color;
-
-        public NativeFillWindow(nint handle, Color color)
-        {
-            _color = color;
-            AssignHandle(handle);
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == WM_ERASEBKGND)
-            {
-                FillAll(m.WParam);
-                m.Result = 1;
-                return;
-            }
-            if (m.Msg == NativeRecolor.WM_PAINT)
-            {
-                // Children cover the rest, only the margin is left to paint
-                nint dc = GetDC(Handle);
-                FillAll(dc);
-                ReleaseDC(Handle, dc);
-                ValidateRect(Handle, nint.Zero);
-                return;
-            }
-            base.WndProc(ref m);
-        }
-
-        private void FillAll(nint dc)
-        {
-            using (Graphics g = Graphics.FromHdc(dc))
-            using (SolidBrush brush = new SolidBrush(_color))
-            {
-                g.FillRectangle(brush, g.VisibleClipBounds);
-            }
-        }
-
-        [DllImport("user32.dll")]
-        private static extern nint GetDC(nint hWnd);
-
-        [DllImport("user32.dll")]
-        private static extern int ReleaseDC(nint hWnd, nint hDC);
-
-        [DllImport("user32.dll")]
-        private static extern bool ValidateRect(nint hWnd, nint lpRect);
     }
 }

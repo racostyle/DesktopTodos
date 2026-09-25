@@ -1,3 +1,5 @@
+using System.Drawing;
+using System.Windows.Forms;
 using System.ComponentModel;
 
 namespace UtilityLib.Controls
@@ -14,8 +16,6 @@ namespace UtilityLib.Controls
 
         // TabControl ignores BackColor, so the strip behind the tabs uses this instead
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-
-        // TabControl ignores BackColor, so the strip behind the tabs uses this instead
         public Color BackgroundColor
         {
             get { return _backgroundColor; }

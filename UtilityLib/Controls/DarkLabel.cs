@@ -1,3 +1,5 @@
+using UtilityLib.Controls.Theming;
+
 namespace UtilityLib.Controls
 {
     public class DarkLabel : Label
