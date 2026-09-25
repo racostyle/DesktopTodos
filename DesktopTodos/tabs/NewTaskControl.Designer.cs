@@ -47,9 +47,15 @@ namespace DesktopTodos.Tabs
             btnSave = new UtilityLib.Controls.DarkButton();
             tableLayoutPanel6 = new TableLayoutPanel();
             tableLayoutPanel7 = new TableLayoutPanel();
-            chbDoRepeat = new UtilityLib.Controls.DarkCheckBox();
             darkLabel2 = new UtilityLib.Controls.DarkLabel();
-            numericUpDown1 = new NumericUpDown();
+            chbDoRepeat = new UtilityLib.Controls.DarkCheckBox();
+            darkNumericUpDown1 = new UtilityLib.Controls.DarkNumericUpDown();
+            cbbRepeatIntervalType = new UtilityLib.Controls.DarkComboBox();
+            tableLayoutPanel8 = new TableLayoutPanel();
+            rbtnRepeatOnWorkdays = new RadioButton();
+            rbtnRepeatOnWeekends = new RadioButton();
+            rbtnRepeatDaily = new RadioButton();
+            darkLabel3 = new UtilityLib.Controls.DarkLabel();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -57,7 +63,8 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)darkNumericUpDown1).BeginInit();
+            tableLayoutPanel8.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -135,7 +142,7 @@ namespace DesktopTodos.Tabs
             // chbHasEndTime
             // 
             chbHasEndTime.AutoSize = true;
-            chbHasEndTime.BackColor = Color.FromArgb(25, 25, 25);
+            chbHasEndTime.BackColor = Color.FromArgb(20, 20, 20);
             chbHasEndTime.Font = new Font("Arial", 12F);
             chbHasEndTime.ForeColor = Color.WhiteSmoke;
             chbHasEndTime.Location = new Point(2, 3);
@@ -149,7 +156,7 @@ namespace DesktopTodos.Tabs
             // pckrEndDateTime
             // 
             pckrEndDateTime.BackColor = Color.Black;
-            pckrEndDateTime.CustomFormat = "dd.MM.yyyy HH:mm";
+            pckrEndDateTime.CustomFormat = "dddd\tdd.MM.yyyy HH:mm";
             pckrEndDateTime.Dock = DockStyle.Fill;
             pckrEndDateTime.Font = new Font("Arial", 12F);
             pckrEndDateTime.ForeColor = Color.WhiteSmoke;
@@ -163,7 +170,7 @@ namespace DesktopTodos.Tabs
             // chbTriggerEndAlert
             // 
             chbTriggerEndAlert.AutoSize = true;
-            chbTriggerEndAlert.BackColor = Color.FromArgb(25, 25, 25);
+            chbTriggerEndAlert.BackColor = Color.FromArgb(20, 20, 20);
             chbTriggerEndAlert.Font = new Font("Arial", 12F);
             chbTriggerEndAlert.ForeColor = Color.WhiteSmoke;
             chbTriggerEndAlert.Location = new Point(2, 67);
@@ -197,7 +204,7 @@ namespace DesktopTodos.Tabs
             // 
             darkLabel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             darkLabel1.AutoSize = true;
-            darkLabel1.BackColor = Color.FromArgb(25, 25, 25);
+            darkLabel1.BackColor = Color.Transparent;
             darkLabel1.Font = new Font("Arial", 12F);
             darkLabel1.ForeColor = Color.WhiteSmoke;
             darkLabel1.Location = new Point(2, 9);
@@ -211,7 +218,7 @@ namespace DesktopTodos.Tabs
             // pckrStartDateTime
             // 
             pckrStartDateTime.BackColor = Color.Black;
-            pckrStartDateTime.CustomFormat = "dd.MM.yyyy HH:mm";
+            pckrStartDateTime.CustomFormat = "dddd\tdd.MM.yyyy HH:mm";
             pckrStartDateTime.Dock = DockStyle.Fill;
             pckrStartDateTime.Font = new Font("Arial", 12F);
             pckrStartDateTime.ForeColor = Color.WhiteSmoke;
@@ -225,7 +232,7 @@ namespace DesktopTodos.Tabs
             // chbTriggerStartAlert
             // 
             chbTriggerStartAlert.AutoSize = true;
-            chbTriggerStartAlert.BackColor = Color.FromArgb(25, 25, 25);
+            chbTriggerStartAlert.BackColor = Color.FromArgb(20, 20, 20);
             chbTriggerStartAlert.Font = new Font("Arial", 12F);
             chbTriggerStartAlert.ForeColor = Color.WhiteSmoke;
             chbTriggerStartAlert.Location = new Point(2, 67);
@@ -298,42 +305,60 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel6.Location = new Point(3, 349);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 3;
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel6.Size = new Size(830, 174);
             tableLayoutPanel6.TabIndex = 3;
             // 
             // tableLayoutPanel7
             // 
             tableLayoutPanel7.BackColor = Color.FromArgb(20, 20, 20);
-            tableLayoutPanel7.ColumnCount = 6;
+            tableLayoutPanel7.ColumnCount = 5;
             tableLayoutPanel6.SetColumnSpan(tableLayoutPanel7, 2);
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel7.Controls.Add(darkLabel2, 1, 0);
             tableLayoutPanel7.Controls.Add(chbDoRepeat, 0, 0);
-            tableLayoutPanel7.Controls.Add(numericUpDown1, 2, 0);
+            tableLayoutPanel7.Controls.Add(darkNumericUpDown1, 2, 0);
+            tableLayoutPanel7.Controls.Add(cbbRepeatIntervalType, 3, 0);
+            tableLayoutPanel7.Controls.Add(tableLayoutPanel8, 2, 1);
+            tableLayoutPanel7.Controls.Add(darkLabel3, 1, 1);
             tableLayoutPanel7.Dock = DockStyle.Fill;
             tableLayoutPanel7.Location = new Point(3, 3);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
-            tableLayoutPanel7.RowCount = 1;
-            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(824, 52);
+            tableLayoutPanel7.RowCount = 2;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Size = new Size(824, 94);
             tableLayoutPanel7.TabIndex = 4;
+            // 
+            // darkLabel2
+            // 
+            darkLabel2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            darkLabel2.AutoSize = true;
+            darkLabel2.BackColor = Color.FromArgb(20, 20, 20);
+            darkLabel2.Font = new Font("Arial", 12F);
+            darkLabel2.ForeColor = Color.WhiteSmoke;
+            darkLabel2.Location = new Point(202, 12);
+            darkLabel2.Margin = new Padding(2, 0, 2, 0);
+            darkLabel2.Name = "darkLabel2";
+            darkLabel2.Size = new Size(152, 23);
+            darkLabel2.TabIndex = 6;
+            darkLabel2.Text = "Repeat every";
+            darkLabel2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // chbDoRepeat
             // 
             chbDoRepeat.Anchor = AnchorStyles.Left;
             chbDoRepeat.AutoSize = true;
-            chbDoRepeat.BackColor = Color.FromArgb(25, 25, 25);
+            chbDoRepeat.BackColor = Color.FromArgb(20, 20, 20);
             chbDoRepeat.Font = new Font("Arial", 12F);
             chbDoRepeat.ForeColor = Color.WhiteSmoke;
-            chbDoRepeat.Location = new Point(2, 12);
+            chbDoRepeat.Location = new Point(2, 10);
             chbDoRepeat.Margin = new Padding(2, 3, 2, 3);
             chbDoRepeat.Name = "chbDoRepeat";
             chbDoRepeat.Size = new Size(133, 27);
@@ -341,27 +366,111 @@ namespace DesktopTodos.Tabs
             chbDoRepeat.Text = "Repeatable";
             chbDoRepeat.UseVisualStyleBackColor = false;
             // 
-            // darkLabel2
+            // darkNumericUpDown1
             // 
-            darkLabel2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            darkLabel2.AutoSize = true;
-            darkLabel2.BackColor = Color.FromArgb(25, 25, 25);
-            darkLabel2.Font = new Font("Arial", 12F);
-            darkLabel2.ForeColor = Color.WhiteSmoke;
-            darkLabel2.Location = new Point(139, 14);
-            darkLabel2.Margin = new Padding(2, 0, 2, 0);
-            darkLabel2.Name = "darkLabel2";
-            darkLabel2.Size = new Size(133, 23);
-            darkLabel2.TabIndex = 6;
-            darkLabel2.Text = "Repeat every";
-            darkLabel2.TextAlign = ContentAlignment.MiddleCenter;
+            darkNumericUpDown1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            darkNumericUpDown1.BackColor = Color.Black;
+            darkNumericUpDown1.BorderStyle = BorderStyle.FixedSingle;
+            darkNumericUpDown1.Font = new Font("Arial", 12F);
+            darkNumericUpDown1.ForeColor = Color.WhiteSmoke;
+            darkNumericUpDown1.Location = new Point(359, 8);
+            darkNumericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            darkNumericUpDown1.Name = "darkNumericUpDown1";
+            darkNumericUpDown1.Size = new Size(150, 30);
+            darkNumericUpDown1.TabIndex = 7;
+            darkNumericUpDown1.TextAlign = HorizontalAlignment.Center;
+            darkNumericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // numericUpDown1
+            // cbbRepeatIntervalType
             // 
-            numericUpDown1.Location = new Point(277, 3);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(131, 27);
-            numericUpDown1.TabIndex = 7;
+            cbbRepeatIntervalType.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            cbbRepeatIntervalType.BackColor = Color.Black;
+            cbbRepeatIntervalType.FlatStyle = FlatStyle.Flat;
+            cbbRepeatIntervalType.Font = new Font("Arial", 12F);
+            cbbRepeatIntervalType.ForeColor = Color.WhiteSmoke;
+            cbbRepeatIntervalType.FormattingEnabled = true;
+            cbbRepeatIntervalType.Location = new Point(515, 8);
+            cbbRepeatIntervalType.Name = "cbbRepeatIntervalType";
+            cbbRepeatIntervalType.Size = new Size(150, 31);
+            cbbRepeatIntervalType.TabIndex = 8;
+            // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 3;
+            tableLayoutPanel7.SetColumnSpan(tableLayoutPanel8, 3);
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel8.Controls.Add(rbtnRepeatDaily, 0, 0);
+            tableLayoutPanel8.Controls.Add(rbtnRepeatOnWeekends, 1, 0);
+            tableLayoutPanel8.Controls.Add(rbtnRepeatOnWorkdays, 2, 0);
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(359, 50);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 1;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel8.Size = new Size(462, 41);
+            tableLayoutPanel8.TabIndex = 9;
+            // 
+            // rbtnRepeatOnWorkdays
+            // 
+            rbtnRepeatOnWorkdays.Anchor = AnchorStyles.Left;
+            rbtnRepeatOnWorkdays.AutoSize = true;
+            rbtnRepeatOnWorkdays.Font = new Font("Arial Narrow", 11F);
+            rbtnRepeatOnWorkdays.ForeColor = Color.White;
+            rbtnRepeatOnWorkdays.Location = new Point(316, 7);
+            rbtnRepeatOnWorkdays.Margin = new Padding(10, 0, 0, 0);
+            rbtnRepeatOnWorkdays.Name = "rbtnRepeatOnWorkdays";
+            rbtnRepeatOnWorkdays.Size = new Size(101, 27);
+            rbtnRepeatOnWorkdays.TabIndex = 2;
+            rbtnRepeatOnWorkdays.TabStop = true;
+            rbtnRepeatOnWorkdays.Text = "Workdays";
+            rbtnRepeatOnWorkdays.UseVisualStyleBackColor = true;
+            // 
+            // rbtnRepeatOnWeekends
+            // 
+            rbtnRepeatOnWeekends.Anchor = AnchorStyles.Left;
+            rbtnRepeatOnWeekends.AutoSize = true;
+            rbtnRepeatOnWeekends.Font = new Font("Arial Narrow", 11F);
+            rbtnRepeatOnWeekends.ForeColor = Color.White;
+            rbtnRepeatOnWeekends.Location = new Point(163, 7);
+            rbtnRepeatOnWeekends.Margin = new Padding(10, 0, 0, 0);
+            rbtnRepeatOnWeekends.Name = "rbtnRepeatOnWeekends";
+            rbtnRepeatOnWeekends.Size = new Size(107, 27);
+            rbtnRepeatOnWeekends.TabIndex = 1;
+            rbtnRepeatOnWeekends.TabStop = true;
+            rbtnRepeatOnWeekends.Text = "Weekends";
+            rbtnRepeatOnWeekends.UseVisualStyleBackColor = true;
+            // 
+            // rbtnRepeatDaily
+            // 
+            rbtnRepeatDaily.Anchor = AnchorStyles.Left;
+            rbtnRepeatDaily.AutoSize = true;
+            rbtnRepeatDaily.Font = new Font("Arial Narrow", 11F);
+            rbtnRepeatDaily.ForeColor = Color.White;
+            rbtnRepeatDaily.Location = new Point(10, 7);
+            rbtnRepeatDaily.Margin = new Padding(10, 0, 0, 0);
+            rbtnRepeatDaily.Name = "rbtnRepeatDaily";
+            rbtnRepeatDaily.Size = new Size(64, 27);
+            rbtnRepeatDaily.TabIndex = 0;
+            rbtnRepeatDaily.TabStop = true;
+            rbtnRepeatDaily.Text = "Daily";
+            rbtnRepeatDaily.UseVisualStyleBackColor = true;
+            // 
+            // darkLabel3
+            // 
+            darkLabel3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            darkLabel3.AutoSize = true;
+            darkLabel3.BackColor = Color.FromArgb(20, 20, 20);
+            darkLabel3.Font = new Font("Arial", 12F);
+            darkLabel3.ForeColor = Color.WhiteSmoke;
+            darkLabel3.Location = new Point(202, 59);
+            darkLabel3.Margin = new Padding(2, 0, 2, 0);
+            darkLabel3.Name = "darkLabel3";
+            darkLabel3.Size = new Size(152, 23);
+            darkLabel3.TabIndex = 10;
+            darkLabel3.Text = "Repeat:";
+            darkLabel3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // NewTaskControl
             // 
@@ -383,7 +492,9 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel6.ResumeLayout(false);
             tableLayoutPanel7.ResumeLayout(false);
             tableLayoutPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)darkNumericUpDown1).EndInit();
+            tableLayoutPanel8.ResumeLayout(false);
+            tableLayoutPanel8.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -407,6 +518,12 @@ namespace DesktopTodos.Tabs
         private TableLayoutPanel tableLayoutPanel7;
         private UtilityLib.Controls.DarkLabel darkLabel2;
         private UtilityLib.Controls.DarkCheckBox chbDoRepeat;
-        private NumericUpDown numericUpDown1;
+        private UtilityLib.Controls.DarkNumericUpDown darkNumericUpDown1;
+        private UtilityLib.Controls.DarkComboBox cbbRepeatIntervalType;
+        private TableLayoutPanel tableLayoutPanel8;
+        private RadioButton rbtnRepeatDaily;
+        private RadioButton rbtnRepeatOnWorkdays;
+        private RadioButton rbtnRepeatOnWeekends;
+        private UtilityLib.Controls.DarkLabel darkLabel3;
     }
 }

@@ -36,16 +36,17 @@ namespace DesktopTodos
             tabTasks = new TabPage();
             tabHistory = new TabPage();
             tabSettings = new TabPage();
+            tabAddNewTask = new TabPage();
+            newTaskControl1 = new DesktopTodos.Tabs.NewTaskControl();
             tabControl.SuspendLayout();
-            tabTasks.SuspendLayout();
-            tabHistory.SuspendLayout();
-            tabSettings.SuspendLayout();
+            tabAddNewTask.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl
             // 
             tabControl.AllowDrop = true;
             tabControl.Controls.Add(tabTasks);
+            tabControl.Controls.Add(tabAddNewTask);
             tabControl.Controls.Add(tabHistory);
             tabControl.Controls.Add(tabSettings);
             tabControl.Dock = DockStyle.Fill;
@@ -91,6 +92,28 @@ namespace DesktopTodos
             tabSettings.Size = new Size(792, 415);
             tabSettings.TabIndex = 2;
             tabSettings.Text = "Settings";
+            // 
+            // tabAddNewTask
+            // 
+            tabAddNewTask.BackColor = Color.FromArgb(25, 25, 25);
+            tabAddNewTask.Controls.Add(newTaskControl1);
+            tabAddNewTask.ForeColor = Color.WhiteSmoke;
+            tabAddNewTask.Location = new Point(4, 31);
+            tabAddNewTask.Name = "tabAddNewTask";
+            tabAddNewTask.Size = new Size(792, 415);
+            tabAddNewTask.TabIndex = 3;
+            tabAddNewTask.Text = "New task";
+            // 
+            // newTaskControl1
+            // 
+            newTaskControl1.BackColor = Color.FromArgb(25, 25, 25);
+            newTaskControl1.Dock = DockStyle.Fill;
+            newTaskControl1.Location = new Point(0, 0);
+            newTaskControl1.Margin = new Padding(2, 3, 2, 3);
+            newTaskControl1.Name = "newTaskControl1";
+            newTaskControl1.Size = new Size(792, 415);
+            newTaskControl1.TabIndex = 0;
+            // 
             // DesktopTodosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -102,9 +125,7 @@ namespace DesktopTodos
             Name = "DesktopTodosForm";
             Text = "Desktop Todos";
             tabControl.ResumeLayout(false);
-            tabTasks.ResumeLayout(false);
-            tabHistory.ResumeLayout(false);
-            tabSettings.ResumeLayout(false);
+            tabAddNewTask.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -116,5 +137,7 @@ namespace DesktopTodos
         private TabPage tabTasks;
         private TabPage tabHistory;
         private TabPage tabSettings;
+        private TabPage tabAddNewTask;
+        private Tabs.NewTaskControl newTaskControl1;
     }
 }
