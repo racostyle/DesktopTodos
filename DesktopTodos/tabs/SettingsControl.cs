@@ -1,6 +1,5 @@
 ﻿
 using DesktopTodos.Hotkeys;
-using System.Windows.Forms;
 
 namespace DesktopTodos.Tabs
 {
