@@ -6,12 +6,12 @@ using System.Windows.Forms;
 
 namespace UtilityLib
 {
-    public static class Utils
+    public static class FormsHelpers
     {
         /// <summary>
         /// This will prevent form duplication. If form of the same type is active it will bring it to the forefront.
         /// Otherwise it will create and display a new form.
-        /// <para>Example: Utils.StartForm(() => new ExampleForm(arg1, arg2));</para>
+        /// <para>Example: FormsHelpers.StartForm(() => new ExampleForm(arg1, arg2));</para>
         /// </summary>
         public static T StartForm<T>(Func<T> formFactory, bool closePrevious = false) where T : Form
         {

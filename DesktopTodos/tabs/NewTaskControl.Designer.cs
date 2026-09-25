@@ -1,4 +1,5 @@
-﻿using UtilityLib;
+﻿using System.Windows.Forms;
+using UtilityLib;
 
 namespace DesktopTodos.Tabs
 {
@@ -33,23 +34,21 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel1 = new TableLayoutPanel();
             darkTextBox1 = new UtilityLib.Controls.DarkTextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            darkLabel1 = new UtilityLib.Controls.DarkLabel();
-            pckrStartDate = new UtilityLib.Controls.DarkDateTimePicker();
-            pckrStartTime = new UtilityLib.Controls.DarkDateTimePicker();
-            chbTriggerStartAlert = new UtilityLib.Controls.DarkCheckBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             darkLabel2 = new UtilityLib.Controls.DarkLabel();
-            pckrEndDate = new UtilityLib.Controls.DarkDateTimePicker();
-            pckrEndTime = new UtilityLib.Controls.DarkDateTimePicker();
+            pckrEndDateTime = new UtilityLib.Controls.DarkDateTimePicker();
             chbTriggerEndAlert = new UtilityLib.Controls.DarkCheckBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            darkLabel1 = new UtilityLib.Controls.DarkLabel();
+            pckrStartDateTime = new UtilityLib.Controls.DarkDateTimePicker();
+            chbTriggerStartAlert = new UtilityLib.Controls.DarkCheckBox();
             tableLayoutPanel5 = new TableLayoutPanel();
             btnCancel = new UtilityLib.Controls.DarkButton();
             btnSave = new UtilityLib.Controls.DarkButton();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,84 +101,12 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel2.Size = new Size(668, 89);
             tableLayoutPanel2.TabIndex = 1;
             // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(darkLabel1, 0, 0);
-            tableLayoutPanel3.Controls.Add(pckrStartDate, 0, 1);
-            tableLayoutPanel3.Controls.Add(pckrStartTime, 1, 1);
-            tableLayoutPanel3.Controls.Add(chbTriggerStartAlert, 0, 2);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 3);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 3;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(328, 83);
-            tableLayoutPanel3.TabIndex = 0;
-            // 
-            // darkLabel1
-            // 
-            darkLabel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            darkLabel1.AutoSize = true;
-            darkLabel1.BackColor = Color.FromArgb(25, 25, 25);
-            darkLabel1.Font = new Font("Arial", 8F);
-            darkLabel1.ForeColor = Color.WhiteSmoke;
-            darkLabel1.Location = new Point(3, 9);
-            darkLabel1.Name = "darkLabel1";
-            darkLabel1.Size = new Size(71, 16);
-            darkLabel1.TabIndex = 0;
-            darkLabel1.Text = "Start Time";
-            darkLabel1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // pckrStartDate
-            // 
-            pckrStartDate.BackColor = Color.Black;
-            pckrStartDate.Dock = DockStyle.Fill;
-            pckrStartDate.Font = new Font("Arial", 8F);
-            pckrStartDate.ForeColor = Color.WhiteSmoke;
-            pckrStartDate.Format = DateTimePickerFormat.Short;
-            pckrStartDate.Location = new Point(3, 28);
-            pckrStartDate.Name = "pckrStartDate";
-            pckrStartDate.Size = new Size(158, 23);
-            pckrStartDate.TabIndex = 1;
-            // 
-            // pckrStartTime
-            // 
-            pckrStartTime.BackColor = Color.Black;
-            pckrStartTime.Dock = DockStyle.Fill;
-            pckrStartTime.Font = new Font("Arial", 8F);
-            pckrStartTime.ForeColor = Color.WhiteSmoke;
-            pckrStartTime.Format = DateTimePickerFormat.Time;
-            pckrStartTime.Location = new Point(167, 28);
-            pckrStartTime.Name = "pckrStartTime";
-            pckrStartTime.Size = new Size(158, 23);
-            pckrStartTime.TabIndex = 2;
-            // 
-            // chbTriggerStartAlert
-            // 
-            chbTriggerStartAlert.AutoSize = true;
-            chbTriggerStartAlert.BackColor = Color.FromArgb(25, 25, 25);
-            chbTriggerStartAlert.Font = new Font("Arial", 8F);
-            chbTriggerStartAlert.ForeColor = Color.WhiteSmoke;
-            chbTriggerStartAlert.Location = new Point(3, 57);
-            chbTriggerStartAlert.Name = "chbTriggerStartAlert";
-            chbTriggerStartAlert.Size = new Size(93, 20);
-            chbTriggerStartAlert.TabIndex = 3;
-            chbTriggerStartAlert.Text = "Fire Alarm";
-            chbTriggerStartAlert.UseVisualStyleBackColor = false;
-            // 
             // tableLayoutPanel4
             // 
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(darkLabel2, 0, 0);
-            tableLayoutPanel4.Controls.Add(pckrEndDate, 0, 1);
-            tableLayoutPanel4.Controls.Add(pckrEndTime, 1, 1);
+            tableLayoutPanel4.Controls.Add(pckrEndDateTime, 0, 1);
             tableLayoutPanel4.Controls.Add(chbTriggerEndAlert, 0, 2);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(337, 3);
@@ -205,29 +132,19 @@ namespace DesktopTodos.Tabs
             darkLabel2.Text = "End Time";
             darkLabel2.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // pckrEndDate
+            // pckrEndDateTime
             // 
-            pckrEndDate.BackColor = Color.Black;
-            pckrEndDate.Dock = DockStyle.Fill;
-            pckrEndDate.Font = new Font("Arial", 8F);
-            pckrEndDate.ForeColor = Color.WhiteSmoke;
-            pckrEndDate.Format = DateTimePickerFormat.Short;
-            pckrEndDate.Location = new Point(3, 28);
-            pckrEndDate.Name = "pckrEndDate";
-            pckrEndDate.Size = new Size(158, 23);
-            pckrEndDate.TabIndex = 1;
-            // 
-            // pckrEndTime
-            // 
-            pckrEndTime.BackColor = Color.Black;
-            pckrEndTime.Dock = DockStyle.Fill;
-            pckrEndTime.Font = new Font("Arial", 8F);
-            pckrEndTime.ForeColor = Color.WhiteSmoke;
-            pckrEndTime.Format = DateTimePickerFormat.Time;
-            pckrEndTime.Location = new Point(167, 28);
-            pckrEndTime.Name = "pckrEndTime";
-            pckrEndTime.Size = new Size(158, 23);
-            pckrEndTime.TabIndex = 2;
+            pckrEndDateTime.BackColor = Color.Black;
+            pckrEndDateTime.Dock = DockStyle.Fill;
+            pckrEndDateTime.Font = new Font("Arial", 8F);
+            pckrEndDateTime.ForeColor = Color.WhiteSmoke;
+            pckrEndDateTime.Format = DateTimePickerFormat.Custom;
+            pckrEndDateTime.CustomFormat = "dd.MM.yyyy HH:mm";
+            pckrEndDateTime.Location = new Point(3, 28);
+            pckrEndDateTime.Name = "pckrEndDateTime";
+            pckrEndDateTime.Size = new Size(322, 23);
+            pckrEndDateTime.TabIndex = 1;
+           
             // 
             // chbTriggerEndAlert
             // 
@@ -241,6 +158,63 @@ namespace DesktopTodos.Tabs
             chbTriggerEndAlert.TabIndex = 3;
             chbTriggerEndAlert.Text = "Fire Alarm";
             chbTriggerEndAlert.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(darkLabel1, 0, 0);
+            tableLayoutPanel3.Controls.Add(pckrStartDateTime, 0, 1);
+            tableLayoutPanel3.Controls.Add(chbTriggerStartAlert, 0, 2);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 3);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 3;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(328, 83);
+            tableLayoutPanel3.TabIndex = 0;
+            // 
+            // darkLabel1
+            // 
+            darkLabel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            darkLabel1.AutoSize = true;
+            darkLabel1.BackColor = Color.FromArgb(25, 25, 25);
+            darkLabel1.Font = new Font("Arial", 8F);
+            darkLabel1.ForeColor = Color.WhiteSmoke;
+            darkLabel1.Location = new Point(3, 9);
+            darkLabel1.Name = "darkLabel1";
+            darkLabel1.Size = new Size(71, 16);
+            darkLabel1.TabIndex = 0;
+            darkLabel1.Text = "Start Time";
+            darkLabel1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pckrStartDateTime
+            // 
+            pckrStartDateTime.BackColor = Color.Black;
+            pckrStartDateTime.Dock = DockStyle.Fill;
+            pckrStartDateTime.Font = new Font("Arial", 8F);
+            pckrStartDateTime.ForeColor = Color.WhiteSmoke;
+            pckrStartDateTime.Format = DateTimePickerFormat.Custom;
+            pckrStartDateTime.CustomFormat = "dd.MM.yyyy HH:mm";
+            pckrStartDateTime.Location = new Point(3, 28);
+            pckrStartDateTime.Name = "pckrStartDateTime";
+            pckrStartDateTime.Size = new Size(322, 23);
+            pckrStartDateTime.TabIndex = 1;
+            // 
+            // chbTriggerStartAlert
+            // 
+            chbTriggerStartAlert.AutoSize = true;
+            chbTriggerStartAlert.BackColor = Color.FromArgb(25, 25, 25);
+            chbTriggerStartAlert.Font = new Font("Arial", 8F);
+            chbTriggerStartAlert.ForeColor = Color.WhiteSmoke;
+            chbTriggerStartAlert.Location = new Point(3, 57);
+            chbTriggerStartAlert.Name = "chbTriggerStartAlert";
+            chbTriggerStartAlert.Size = new Size(93, 20);
+            chbTriggerStartAlert.TabIndex = 3;
+            chbTriggerStartAlert.Text = "Fire Alarm";
+            chbTriggerStartAlert.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel5
             // 
@@ -301,10 +275,10 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
             tableLayoutPanel5.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -316,13 +290,11 @@ namespace DesktopTodos.Tabs
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private UtilityLib.Controls.DarkLabel darkLabel1;
-        private UtilityLib.Controls.DarkDateTimePicker pckrStartDate;
-        private UtilityLib.Controls.DarkDateTimePicker pckrStartTime;
+        private UtilityLib.Controls.DarkDateTimePicker pckrStartDateTime;
         private UtilityLib.Controls.DarkCheckBox chbTriggerStartAlert;
         private TableLayoutPanel tableLayoutPanel4;
         private UtilityLib.Controls.DarkLabel darkLabel2;
-        private UtilityLib.Controls.DarkDateTimePicker pckrEndDate;
-        private UtilityLib.Controls.DarkDateTimePicker pckrEndTime;
+        private UtilityLib.Controls.DarkDateTimePicker pckrEndDateTime;
         private UtilityLib.Controls.DarkCheckBox chbTriggerEndAlert;
         private TableLayoutPanel tableLayoutPanel5;
         private UtilityLib.Controls.DarkButton btnCancel;

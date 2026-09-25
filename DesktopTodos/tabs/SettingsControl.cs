@@ -1,5 +1,6 @@
 ﻿
 using DesktopTodos.Hotkeys;
+using DesktopTodos.Settings.Settings;
 
 namespace DesktopTodos.Tabs
 {
@@ -11,9 +12,13 @@ namespace DesktopTodos.Tabs
         public SettingsControl(UserSettingsHandler userSettingsHandler, HotkeyManager hotkeyManager)
         {
             InitializeComponent();
+
             _userSettingsHandler = userSettingsHandler;
             _hotkeyManager = hotkeyManager;
+
             _userSettingsHandler.Unpack(this);
+
+            _hotkeyManager.TryRegisterSavedHotkey(_userSettingsHandler.Settings.HotkeyKeys, tbNewTaskHotkey);
 
             tbNewTaskHotkey.KeyDown += OnTbNewTaskHotkey_KeyDown;
         }
@@ -22,10 +27,7 @@ namespace DesktopTodos.Tabs
         {
             if (sender is TextBox)
             {
-                if (_hotkeyManager.TryCreateHotkey((TextBox)sender, e))
-                {
-                    tbHotkeyID.Text = $"{_hotkeyManager.HotkeyID}";
-                }
+                _hotkeyManager.TryCreateHotkey((TextBox)sender, e);
             }
         }
 

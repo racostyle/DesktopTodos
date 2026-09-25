@@ -1,7 +1,8 @@
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using UtilityLib.Configurations;
 
-namespace DesktopTodos
+namespace DesktopTodos.Settings.Settings
 {
     internal class UserSettingsHandler
     {
@@ -9,14 +10,15 @@ namespace DesktopTodos
         private readonly string APP_NAME = "appsettings.json";
 
         private readonly ConfigurationAdapter _adapter;
-        private Dictionary<string, string> _settings;
+        private readonly SettingsAccessor _settings;
+        private Dictionary<string, string> _config;
 
-        internal Dictionary<string, string> Settings => _settings;
-
+        internal SettingsAccessor Settings => _settings;
 
         public UserSettingsHandler(ConfigurationAdapter adapter)
         {
             _adapter = adapter;
+            _settings = new SettingsAccessor(() => _config);
 
             if (!Directory.Exists(BASE_LOCATION))
                 Directory.CreateDirectory(BASE_LOCATION);
@@ -26,9 +28,9 @@ namespace DesktopTodos
         {
             try
             {
-                _settings = _adapter.PackControls(control);
+                _config = _adapter.PackControls(control);
 
-                var text = JsonSerializer.Serialize(_settings);
+                var text = JsonSerializer.Serialize(_config);
                 File.WriteAllText(Path.Combine(BASE_LOCATION, APP_NAME), text);
             }
             catch (Exception ex)
@@ -48,9 +50,9 @@ namespace DesktopTodos
 
                 if (string.IsNullOrEmpty(text)) return;
 
-                _settings = JsonSerializer.Deserialize<Dictionary<string, string>>(text)!;
+                _config = JsonSerializer.Deserialize<Dictionary<string, string>>(text)!;
 
-                _adapter.UnpackControls(control, _settings);
+                _adapter.UnpackControls(control, _config);
 
             }
             catch (Exception ex)

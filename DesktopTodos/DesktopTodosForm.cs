@@ -1,6 +1,9 @@
 
 using DesktopTodos.Hotkeys;
+using DesktopTodos.Settings;
+using DesktopTodos.Settings.Settings;
 using DesktopTodos.Tabs;
+using UtilityLib;
 using UtilityLib.Configurations;
 
 namespace DesktopTodos
@@ -56,7 +59,8 @@ namespace DesktopTodos
 
         private void HotkeyPressedCallback()
         {
-            MessageBox.Show("Test!");
+            var form = FormsHelpers.StartForm(() => new NewTaskForm());
+            form.BringToFront();
         }
 
         private void OnDesktopTodosForm_Disposed(object? sender, EventArgs e)

@@ -38,7 +38,6 @@ namespace DesktopTodos.Tabs
             chbAreSoundAlerts = new UtilityLib.Controls.DarkCheckBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             btnSaveSettings = new UtilityLib.Controls.DarkButton();
-            tbHotkeyID = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -70,7 +69,6 @@ namespace DesktopTodos.Tabs
             tableLayoutPanel3.Controls.Add(darkLabel1, 0, 0);
             tableLayoutPanel3.Controls.Add(chbAreVisualAlerts, 0, 2);
             tableLayoutPanel3.Controls.Add(chbAreSoundAlerts, 0, 1);
-            tableLayoutPanel3.Controls.Add(tbHotkeyID, 2, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -170,15 +168,6 @@ namespace DesktopTodos.Tabs
             btnSaveSettings.UseVisualStyleBackColor = false;
             btnSaveSettings.Click += OnBtnSaveSettings_Click;
             // 
-            // tbHotkeyID
-            // 
-            tbHotkeyID.Location = new Point(575, 53);
-            tbHotkeyID.Name = "tbHotkeyID";
-            tbHotkeyID.ReadOnly = true;
-            tbHotkeyID.Size = new Size(125, 27);
-            tbHotkeyID.TabIndex = 5;
-            tbHotkeyID.Visible = false;
-            // 
             // SettingsControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -204,6 +193,5 @@ namespace DesktopTodos.Tabs
         private TableLayoutPanel tableLayoutPanel2;
         private UtilityLib.Controls.DarkButton btnSaveSettings;
         private TableLayoutPanel tableLayoutPanel3;
-        private TextBox tbHotkeyID;
     }
 }

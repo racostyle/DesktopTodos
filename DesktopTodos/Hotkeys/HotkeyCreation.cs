@@ -51,7 +51,7 @@
             return string.Join(" + ", parts);
         }
 
-        private bool TryValidateHotkey(Keys hotkey, out string value)
+        private static bool TryValidateHotkey(Keys hotkey, out string value)
         {
             Keys key = hotkey & Keys.KeyCode;
             Keys mods = hotkey & Keys.Modifiers;
@@ -86,6 +86,38 @@
             return true; // valid
         }
 
+        /// <summary>
+        /// Reverse of FormatHotkey: "Ctrl + Shift + Alt + N" -> Keys.
+        /// Returns Keys.None for empty, "(none)" or unrecognized text.
+        /// </summary>
+        internal Keys ParseHotkeyFromString(string? text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return Keys.None;
+
+            Keys result = Keys.None;
+            Keys key = Keys.None;
+
+            foreach (var raw in text.Split('+'))
+            {
+                var part = raw.Trim();
+
+                switch (part.ToLowerInvariant())
+                {
+                    case "ctrl": result |= Keys.Control; break;
+                    case "shift": result |= Keys.Shift; break;
+                    case "alt": result |= Keys.Alt; break;
+                    default:
+                        if (key != Keys.None)                                    // two main keys
+                            return Keys.None;
+                        if (!Enum.TryParse(part, ignoreCase: true, out key))     // "N", "F5", "D1"...
+                            return Keys.None;
+                        break;
+                }
+            }
+
+            return key == Keys.None ? Keys.None : result | key;
+        }
 
     }
 }

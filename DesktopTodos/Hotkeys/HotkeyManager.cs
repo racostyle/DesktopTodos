@@ -1,5 +1,7 @@
 ﻿
 
+using System.Globalization;
+
 namespace DesktopTodos.Hotkeys
 {
     internal class HotkeyManager
@@ -9,8 +11,6 @@ namespace DesktopTodos.Hotkeys
 
         private int _hotkeyId;                 // 0 = nothing registered
         private Keys _currentHotkey = Keys.None;
-
-        internal int HotkeyID => _hotkeyId;
 
         public HotkeyManager(HotkeyCreation hotkeyCreation, HotkeyRegistration hotkeyRegistration)
         {
@@ -31,19 +31,15 @@ namespace DesktopTodos.Hotkeys
             if (_currentHotkey == hotkey)
                 return false;
 
-            if (ApplyHotkey(hotkey))
-            {
-                _currentHotkey = hotkey;
-                _hotkeyId = (int)hotkey;
+            if (RegisterHotkey(hotkey))       // sets _hotkeyId and _currentHotkey
                 return true;
-            }
 
             sender.ForeColor = Color.Red;
             sender.Text = "Already used by another program.";
             return false;
         }
 
-        private bool ApplyHotkey(Keys hotkey)
+        private bool RegisterHotkey(Keys hotkey)
         {
             // clear
             if (hotkey == Keys.None)
@@ -64,5 +60,10 @@ namespace DesktopTodos.Hotkeys
             return ok;
         }
 
+        internal void TryRegisterSavedHotkey(string savedText, TextBox textBox)
+        {
+            if (RegisterHotkey(_hotkeyCreation.ParseHotkeyFromString(savedText)))
+                textBox.Text = savedText;
+        }
     }
 }
